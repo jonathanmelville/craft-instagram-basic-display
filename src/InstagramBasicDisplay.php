@@ -2,7 +2,7 @@
 /**
  * Instagram Basic Display plugin for Craft CMS 3.x
  *
- * This plugin creates endpoints in your Craft install for you to consume the Instagram Basic Display API as well as the oEmbed API. It also provides some helper methods for dealing with your access token and getting refresh tokens.
+ * Provides endpoints and helper console commands that make it easier to work with the Instagram Basic Display API.
  *
  * @link      https://codemdd.io
  * @copyright Copyright (c) 2021 Jonathan Melville

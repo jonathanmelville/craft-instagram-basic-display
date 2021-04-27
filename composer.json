@@ -1,6 +1,6 @@
 {
     "name": "melvilleco/instagram-basic-display",
-    "description": "This plugin creates endpoints in your Craft install for you to consume the Instagram Basic Display API as well as the oEmbed API. It also provides some helper methods for dealing with your access token and getting refresh tokens.",
+    "description": "Provides endpoints and helper console commands that make it easier to work with the Instagram Basic Display API.",
     "type": "craft-plugin",
     "version": "1.0.0",
     "keywords": [
@@ -8,11 +8,17 @@
         "cms",
         "craftcms",
         "craft-plugin",
+        "instagram",
+        "instagram api",
+        "instagram oembed",
+        "instagram embed",
+        "instagram feed",
+        "craft instagram",
         "instagram basic display"
     ],
     "support": {
-        "docs": "https://github.com/craft-instagram-basic-display/instagram-basic-display/blob/master/README.md",
-        "issues": "https://github.com/craft-instagram-basic-display/instagram-basic-display/issues"
+        "docs": "https://github.com/jonathanmelville/craft-instagram-basic-display/blob/master/README.md",
+        "issues": "https://github.com/jonathanmelville/craft-instagram-basic-display/issues"
     },
     "license": "MIT",
     "authors": [
@@ -23,6 +29,10 @@
     ],
     "require": {
         "craftcms/cms": "^3.0.0"
+    }
+    ,
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
     },
     "autoload": {
         "psr-4": {
@@ -34,8 +44,8 @@
         "handle": "instagram-basic-display",
         "developer": "Jonathan Melville",
         "developerUrl": "https://codemdd.io",
-        "documentationUrl": "https://github.com/craft-instagram-basic-display/instagram-basic-display/blob/master/README.md",
-        "changelogUrl": "https://raw.githubusercontent.com/craft-instagram-basic-display/instagram-basic-display/master/CHANGELOG.md",
+        "documentationUrl": "https://github.com/jonathanmelville/craft-instagram-basic-display/blob/master/README.md",
+        "changelogUrl": "https://raw.githubusercontent.com/jonathanmelville/craft-instagram-basic-display/master/CHANGELOG.md",
         "components": {
             "instagramBasicDisplayService": "melvilleco\\instagrambasicdisplay\\services\\InstagramBasicDisplayService"
         },
