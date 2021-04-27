@@ -72,8 +72,6 @@ class DefaultController extends Controller
      */
     public function actionDoSomething()
     {
-        $result = 'Welcome to the DefaultController actionDoSomething() method';
-
-        return $result;
+        return InstagramBasicDisplay::$plugin->instagramBasicDisplayService->exampleService();
     }
 }

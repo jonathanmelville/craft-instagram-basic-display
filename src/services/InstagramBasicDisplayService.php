@@ -45,8 +45,8 @@ class InstagramBasicDisplayService extends Component
      */
     public function exampleService()
     {
-        $result = 'something';
+        $settings = InstagramBasicDisplay::$plugin->getSettings();
 
-        return $result;
+        return $settings['default_string'];
     }
 }

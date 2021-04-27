@@ -27,17 +27,20 @@ use craft\base\Model;
  * @package   InstagramBasicDisplay
  * @since     1.0.0
  */
-class InstagramBasicDisplayModel extends Model
+class Settings extends Model
 {
     // Public Properties
     // =========================================================================
 
     /**
-     * Some model attribute
-     *
+     * @var bool
+     */
+    public $testing = true;
+
+    /**
      * @var string
      */
-    public $someAttribute = 'Some Default';
+    public $default_string = 'default string test';
 
     // Public Methods
     // =========================================================================
@@ -52,11 +55,12 @@ class InstagramBasicDisplayModel extends Model
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            ['someAttribute', 'string'],
-            ['someAttribute', 'default', 'value' => 'Some Default'],
+            ['testing', 'boolean'],
+            ['testing', 'default', 'value' => true],
+            ['default_string', 'string'],
         ];
     }
 }

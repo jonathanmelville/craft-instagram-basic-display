@@ -11,6 +11,7 @@
 namespace melvilleco\instagrambasicdisplay;
 
 use melvilleco\instagrambasicdisplay\services\InstagramBasicDisplayService as InstagramBasicDisplayServiceService;
+use melvilleco\instagrambasicdisplay\models\Settings;
 
 use Craft;
 use craft\base\Plugin;
@@ -158,5 +159,13 @@ class InstagramBasicDisplay extends Plugin
 
     // Protected Methods
     // =========================================================================
+
+    /**
+     * @inheritdoc
+     */
+    protected function createSettingsModel()
+    {
+        return new Settings();
+    }
 
 }
