@@ -24,20 +24,20 @@ To install the plugin, follow these instructions.
 
 ## Instagram Basic Display Overview
 
--Insert text here-
+This plugin provides some helper methods and endpoints for working with the [Instagram Basic Display API](https://developers.facebook.com/docs/instagram-basic-display-api/) and the [Instagram OEmbed](https://developers.facebook.com/docs/instagram/oembed) service.
 
 ## Configuring Instagram Basic Display
 
--Insert text here-
+Coming soon...
 
 ## Using Instagram Basic Display
 
--Insert text here-
+Coming soon...
 
 ## Instagram Basic Display Roadmap
 
 Some things to do, and ideas for potential features:
 
-* Release it
+* Make some docs!
 
 Brought to you by [Jonathan Melville](https://codemdd.io)
