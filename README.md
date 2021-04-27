@@ -94,6 +94,7 @@ Get your Instagram feed as a JSON response:
 Some things to do, and ideas for potential features:
 
 * Add OEmbed docs.
+* Add twig variable to access feed directly in templates.  
 * Work out solution for scaling images.
 
 Brought to you by [Jonathan Melville](https://codemdd.io)
