@@ -12,8 +12,10 @@ namespace melvilleco\instagrambasicdisplay;
 
 use melvilleco\instagrambasicdisplay\services\InstagramBasicDisplayService as InstagramBasicDisplayServiceService;
 use melvilleco\instagrambasicdisplay\models\Settings;
+use melvilleco\instagrambasicdisplay\variables\InstagramVariable;
 
 use Craft;
+use craft\web\twig\variables\CraftVariable;
 use craft\base\Plugin;
 use craft\services\Plugins;
 use craft\events\PluginEvent;
@@ -99,6 +101,17 @@ class InstagramBasicDisplay extends Plugin
         if (Craft::$app instanceof ConsoleApplication) {
             $this->controllerNamespace = 'melvilleco\instagrambasicdisplay\console\controllers';
         }
+
+        // Register our variables
+        Event::on(
+            CraftVariable::class,
+            CraftVariable::EVENT_INIT,
+            function (Event $event) {
+                /** @var CraftVariable $variable */
+                $variable = $event->sender;
+                $variable->set('instagram', InstagramVariable::class);
+            }
+        );
 
         // Register our site routes
         Event::on(
