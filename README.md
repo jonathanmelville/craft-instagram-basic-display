@@ -28,6 +28,14 @@ This plugin provides some helper methods and endpoints for working with the [Ins
 
 The plugin makes available several useful console commands and controller actions to help you access your Instagram content.
 
+## Configuration
+
+Configuration is done via the `src/config.php` config file. It should be renamed to `instagram-basic-display.php` and copied to your `config/` directory to take effect. 
+
+The most likely options you may want to change are `cache_duration` and `fields`. `fields` simply determines [what data is returned](https://developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields) by the request. 
+
+#
+
 ## Inserting Your Access Token
 
 By default, Instagram User Access Tokens are short-lived and are valid for one hour. However, short-lived tokens can be exchanged for long-lived tokens.
@@ -44,7 +52,7 @@ After you obtain your long-lived token, run the following command to insert it i
 
 As long-lived tokens are only valid for 60 days, you will need to periodically request a refreshed token. You can easily do this by setting up a cron task that calls the refresh method of the plugin:
 
-      ./craft instagram-basic-display/token/insert
+      ./craft instagram-basic-display/token/refresh
 
 Your old token will be used to obtain a new one, and the new token will be inserted into the database.
 

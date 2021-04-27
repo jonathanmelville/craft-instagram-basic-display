@@ -1,5 +1,9 @@
 # Instagram Basic Display Changelog
 
+## 1.0.3 - 2021-04-27
+### Added
+- Documentation for config options.
+
 ## 1.0.2 - 2021-04-27
 ### Added
 - Documentation for basic commands.
