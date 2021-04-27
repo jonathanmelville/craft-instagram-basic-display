@@ -10,10 +10,13 @@
 
 namespace melvilleco\instagrambasicdisplay\controllers;
 
+use craft\helpers\Json;
 use melvilleco\instagrambasicdisplay\InstagramBasicDisplay;
 
 use Craft;
 use craft\web\Controller;
+use craft\web\Request;
+use phpDocumentor\Reflection\Types\Object_;
 
 /**
  * Default Controller
@@ -35,7 +38,7 @@ use craft\web\Controller;
  * @package   InstagramBasicDisplay
  * @since     1.0.0
  */
-class DefaultController extends Controller
+class FeedController extends Controller
 {
 
     // Protected Properties
@@ -46,32 +49,30 @@ class DefaultController extends Controller
      *         The actions must be in 'kebab-case'
      * @access protected
      */
-    protected $allowAnonymous = ['index', 'do-something'];
+    protected $allowAnonymous = ['get', 'get-oembed'];
 
     // Public Methods
     // =========================================================================
 
-    /**
-     * Handle a request going to our plugin's index action URL,
-     * e.g.: actions/instagram-basic-display/default
-     *
-     * @return mixed
-     */
-    public function actionIndex()
-    {
-        $result = 'Welcome to the DefaultController actionIndex() method';
 
-        return $result;
+    /**
+     * Get full Instagram feed: `actions/instagram-basic-display/feed/get`
+     *
+     * @return \yii\web\Response
+     */
+    public function actionGet(): \yii\web\Response
+    {
+        return $this->asJson(InstagramBasicDisplay::$plugin->instagramBasicDisplayService->getFeed());
     }
 
     /**
-     * Handle a request going to our plugin's actionDoSomething URL,
-     * e.g.: actions/instagram-basic-display/default/do-something
+     * Get the oEmbed for an Instagram post: `actions/instagram-basic-display/feed/get-oembed?url={postUrl}`
      *
-     * @return mixed
+     * @return \yii\web\Response
      */
-    public function actionDoSomething()
+    public function actionGetOembed(): \yii\web\Response
     {
-        return InstagramBasicDisplay::$plugin->instagramBasicDisplayService->exampleService();
+        $request = new Request;
+        return $this->asJson(InstagramBasicDisplay::$plugin->instagramBasicDisplayService->getOEmbed($request->get('url')));
     }
 }

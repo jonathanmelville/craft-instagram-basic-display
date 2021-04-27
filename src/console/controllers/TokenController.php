@@ -17,7 +17,7 @@ use yii\console\Controller;
 use yii\helpers\Console;
 
 /**
- * Default Command
+ * Instagram Basic Display
  *
  * The first line of this class docblock is displayed as the description
  * of the Console Command in ./craft help
@@ -41,42 +41,35 @@ use yii\helpers\Console;
  * @package   InstagramBasicDisplay
  * @since     1.0.0
  */
-class DefaultController extends Controller
+class TokenController extends Controller
 {
     // Public Methods
     // =========================================================================
 
     /**
-     * Handle instagram-basic-display/default console commands
-     *
-     * The first line of this method docblock is displayed as the description
-     * of the Console Command in ./craft help
-     *
-     * @return mixed
+     * Echo out the current access token.
      */
-    public function actionIndex()
+    public function actionGet()
     {
-        $result = 'something';
-
-        echo "Welcome to the console DefaultController actionIndex() method\n";
-
-        return $result;
+        InstagramBasicDisplay::$plugin->instagramBasicDisplayService->dumpAccessToken();
     }
 
     /**
-     * Handle instagram-basic-display/default/do-something console commands
+     * Manually insert an access token into the database.
      *
-     * The first line of this method docblock is displayed as the description
-     * of the Console Command in ./craft help
-     *
-     * @return mixed
+     * @param $token
+     * @return bool|\Exception|\yii\db\Exception
      */
-    public function actionDoSomething()
-    {
-        $result = 'something';
+    public function actionInsert($token) {
+        return InstagramBasicDisplay::$plugin->instagramBasicDisplayService->insertAccessToken($token);
+    }
 
-        echo "Welcome to the console DefaultController actionDoSomething() method\n";
-
-        return $result;
+    /**
+     * Refresh the current token.
+     *
+     * @return \Psr\Http\Message\StreamInterface|string
+     */
+    public function actionRefresh() {
+        return InstagramBasicDisplay::$plugin->instagramBasicDisplayService->refreshToken();
     }
 }

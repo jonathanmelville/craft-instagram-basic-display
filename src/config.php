@@ -20,6 +20,27 @@
  */
 
 return [
-    'testing' => true,
-    'default_string' => 'default string',
+    // The Basic Display API .
+    'api' => 'https://graph.instagram.com/',
+
+    // The oembed API.
+    'oembed_api' => 'https://graph.facebook.com/v8.0/',
+
+    // The endpoint for refreshing an access token.
+    'refresh_endpoint' => 'refresh_access_token',
+
+    // The endpoint for getting a user's feed.
+    'media_endpoint' => 'me/media',
+
+    // The endpoint for oembed.
+    'oembed_endpoint' => 'instagram_oembed',
+
+    // Which fields do we want to pull from the media endpoint.
+    'fields' => 'media_type,media_url,permalink,thumbnail_url',
+
+    // Whether or not to omit the embed script with oembed responses.
+    'omit_script' => 1,
+
+    // How long to cache API responses.
+    'cache_duration' => 1800
 ];

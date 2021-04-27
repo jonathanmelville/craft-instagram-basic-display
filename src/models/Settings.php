@@ -33,14 +33,44 @@ class Settings extends Model
     // =========================================================================
 
     /**
-     * @var bool
+     * @var string
      */
-    public $testing = true;
+    public $api = 'https://graph.instagram.com/';
 
     /**
      * @var string
      */
-    public $default_string = 'default string test';
+    public $oembed_api = 'https://graph.facebook.com/v8.0/';
+
+    /**
+     * @var string
+     */
+    public $refresh_endpoint = 'refresh_access_token';
+
+    /**
+     * @var string
+     */
+    public $media_endpoint = 'me/media';
+
+    /**
+     * @var string
+     */
+    public $oembed_endpoint = 'instagram_oembed';
+
+    /**
+     * @var string
+     */
+    public $fields = 'media_type,media_url,permalink,thumbnail_url';
+
+    /**
+     * @var bool
+     */
+    public $omit_script = true;
+
+    /**
+     * @var int
+     */
+    public $cache_duration = 1800;
 
     // Public Methods
     // =========================================================================
@@ -58,9 +88,14 @@ class Settings extends Model
     public function rules(): array
     {
         return [
-            ['testing', 'boolean'],
-            ['testing', 'default', 'value' => true],
-            ['default_string', 'string'],
+            ['api', 'string'],
+            ['oembed_api', 'string'],
+            ['refresh_endpoint', 'string'],
+            ['media_endpoint', 'string'],
+            ['oembed_endpoint', 'string'],
+            ['fields', 'string'],
+            ['omit_script', 'boolean'],
+            ['cache_duration', 'integer']
         ];
     }
 }
