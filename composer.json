@@ -1,0 +1,44 @@
+{
+    "name": "melvilleco/instagram-basic-display",
+    "description": "This plugin creates endpoints in your Craft install for you to consume the Instagram Basic Display API as well as the oEmbed API. It also provides some helper methods for dealing with your access token and getting refresh tokens.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "instagram basic display"
+    ],
+    "support": {
+        "docs": "https://github.com/craft-instagram-basic-display/instagram-basic-display/blob/master/README.md",
+        "issues": "https://github.com/craft-instagram-basic-display/instagram-basic-display/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jonathan Melville",
+            "homepage": "https://codemdd.io"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "melvilleco\\instagrambasicdisplay\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Instagram Basic Display",
+        "handle": "instagram-basic-display",
+        "developer": "Jonathan Melville",
+        "developerUrl": "https://codemdd.io",
+        "documentationUrl": "https://github.com/craft-instagram-basic-display/instagram-basic-display/blob/master/README.md",
+        "changelogUrl": "https://raw.githubusercontent.com/craft-instagram-basic-display/instagram-basic-display/master/CHANGELOG.md",
+        "components": {
+            "instagramBasicDisplayService": "melvilleco\\instagrambasicdisplay\\services\\InstagramBasicDisplayService"
+        },
+        "class": "melvilleco\\instagrambasicdisplay\\InstagramBasicDisplay"
+    }
+}
