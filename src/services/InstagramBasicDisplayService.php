@@ -135,7 +135,7 @@ class InstagramBasicDisplayService extends Component
                         'access_token' => $this->_getAccessToken()
                     ]
                 ]);
-                return json_decode($response->getBody(), false);
+                return json_decode($response->getBody()->getContents(), true)['data'];
             } catch (GuzzleException $e) {
                 return $e->getMessage();
             }

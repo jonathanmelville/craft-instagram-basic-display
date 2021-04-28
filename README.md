@@ -80,20 +80,32 @@ Refresh the current token:
 
 ***
 
-### Controller Actions
-The following controller actions are available:
-
-***
-
-Get your Instagram feed as a JSON response:
+### Accessing your Instagram feed as JSON
+If accessing your feed from inside a Vue or React component, you can hit the following endpoint to get a JSON response:
 
       /actions/instagram-basic-display/feed/get
+
+### Getting Your Feed in Twig
+You can also output your feed inside your Twig templates using a `{% for %}` loop:
+
+```html
+<ul>
+   {% for media in craft.instagram.getFeed() %}
+      {% if media.media_type == 'IMAGE' %}
+         <a href="{{ media.permalink }}">
+            <img src="{{ media.media_url }}" alt="">
+         </a>
+      {% endif %}
+   {% endfor %}
+</ul>
+```
 
 ## Instagram Basic Display Roadmap
 
 Some things to do, and ideas for potential features:
 
 * Add OEmbed docs.
+* Create better docs for how to get an initial token.
 * Work out solution for scaling images.
 
 Brought to you by [Jonathan Melville](https://codemdd.io)

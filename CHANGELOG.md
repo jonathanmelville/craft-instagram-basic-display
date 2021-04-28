@@ -1,5 +1,9 @@
 # Instagram Basic Display Changelog
 
+## 1.0.4 - 2021-04-28
+### Added
+- Add support for outputting feed in twig.
+
 ## 1.0.3 - 2021-04-27
 ### Added
 - Documentation for config options.
