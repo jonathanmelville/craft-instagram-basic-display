@@ -2,7 +2,7 @@
 
 This plugin creates endpoints in your Craft install for you to consume the Instagram Basic Display API as well as the oEmbed API. It also provides some helper methods for dealing with your access token and getting refresh tokens.
 
-![Screenshot](resources/img/plugin-logo.png)
+<img width="100" src="https://raw.githubusercontent.com/jonathanmelville/craft-instagram-basic-display/master/resources/img/plugin-logo.png">
 
 ## Requirements
 
@@ -20,7 +20,9 @@ To install the plugin, follow these instructions.
 
         composer require melvilleco/instagram-basic-display
 
-3. Obtain a [long-lived access token](https://developers.facebook.com/docs/instagram-basic-display-api/guides/long-lived-access-tokens/) from Instagram and [insert it into your database](#inserting-your-access-token).
+3. Obtain a [long-lived access token](https://developers.facebook.com/docs/instagram-basic-display-api/guides/long-lived-access-tokens/) from Instagram (see example video below) and [insert it into your database](#inserting-your-access-token).
+
+<a href="https://www.loom.com/share/687cc456759d4fb89772075b77cf64e1"> <p>How to get an initial access token for the Instagram Basic Display API - Watch Video</p> <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/687cc456759d4fb89772075b77cf64e1-with-play.gif"> </a>
 
 ## Instagram Basic Display Overview
 
