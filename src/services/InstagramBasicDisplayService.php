@@ -134,7 +134,12 @@ class InstagramBasicDisplayService extends Component
      */
     public function getTokenAge()
     {
-        echo 'Token age';
+//        $target = DateTimeHelper::toDateTime($this->_getAccessTokenAge());
+//        $interval = $target->diff((new DateTime()));
+//        echo 'Token age: ' . $interval->format('%d day(s), %h hour(s), %i min, %s sec');
+        $exp_date = DateTimeHelper::toDateTime($this->_getAccessTokenAge())->format('F d, Y  H:i:s A');
+        echo "\n" . "Current token will expire on {$exp_date}" . "\n" ."\n";
+
     }
 
     /**
@@ -220,10 +225,10 @@ class InstagramBasicDisplayService extends Component
     private function _getAccessTokenAge()
     {
         $token = (new Query())
-            ->select(['dateUpdated'])
+            ->select(['token_expiration_time'])
             ->from('instagram_access_token')
             ->limit(1)
             ->all();
-        return ($token[0]['dateUpdated'] ?? null);
+        return ($token[0]['token_expiration_time'] ?? null);
     }
 }
