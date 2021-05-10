@@ -11,8 +11,9 @@
 namespace melvilleco\instagrambasicdisplay\services;
 
 use melvilleco\instagrambasicdisplay\InstagramBasicDisplay;
-
 use Craft;
+use DateTime;
+use craft\helpers\DateTimeHelper;
 use craft\base\Component;
 use craft\db\Query;
 use craft\helpers\App;
@@ -48,7 +49,7 @@ class InstagramBasicDisplayService extends Component
 
     /**
      * Manually insert an access token into the database.
-    */
+     */
     public function insertAccessToken($token)
     {
         try {
@@ -71,6 +72,7 @@ class InstagramBasicDisplayService extends Component
 
     /**
      * Refresh the current token.
+     *
      * @return \Psr\Http\Message\StreamInterface|string
      */
     public function refreshToken()
@@ -113,6 +115,17 @@ class InstagramBasicDisplayService extends Component
         } catch (GuzzleException $e) {
             return $e->getMessage();
         }
+    }
+
+
+    /**
+     * Return the age of the current token.
+     *
+     * @throws \Exception
+     */
+    public function getTokenAge()
+    {
+        echo 'Token age';
     }
 
     /**
@@ -187,5 +200,20 @@ class InstagramBasicDisplayService extends Component
             ->limit(1)
             ->all();
         return unserialize(($token[0]['access_token'] ?? null), [true]);
+    }
+
+    /**
+     * Retrieve dateUpdated of current token.
+     *
+     * @return mixed
+     */
+    private function _getAccessTokenAge()
+    {
+        $token = (new Query())
+            ->select(['dateUpdated'])
+            ->from('instagram_access_token')
+            ->limit(1)
+            ->all();
+        return ($token[0]['dateUpdated'] ?? null);
     }
 }
