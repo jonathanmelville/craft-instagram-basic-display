@@ -13,6 +13,7 @@ namespace melvilleco\instagrambasicdisplay\services;
 use melvilleco\instagrambasicdisplay\InstagramBasicDisplay;
 use Craft;
 use DateTime;
+use DateInterval;
 use craft\helpers\DateTimeHelper;
 use craft\base\Component;
 use craft\db\Query;
@@ -44,7 +45,7 @@ class InstagramBasicDisplayService extends Component
      */
     public function dumpAccessToken()
     {
-        echo (!empty($this->_getAccessToken()) ? 'Current token: ' . $this->_getAccessToken() : 'No access token!') . "\n";
+        echo "\n" . (!empty($this->_getAccessToken()) ? 'Current token: ' . $this->_getAccessToken() : 'No access token!') . "\n" . "\n";
     }
 
     /**
@@ -64,6 +65,10 @@ class InstagramBasicDisplayService extends Component
                 ->insert('instagram_access_token', [
                     'access_token' => serialize($token),
                 ])->execute();
+            /*
+             * Call refresh so we can get an expiration time for the token.
+             */
+            echo $this->refreshToken() . "\n";
         } catch (Exception $e) {
             return $e;
         }
@@ -91,6 +96,8 @@ class InstagramBasicDisplayService extends Component
             ]);
 
             $token = json_decode($response->getBody(), true)['access_token'];
+            $expires_in = json_decode($response->getBody(), true)['expires_in'];
+            $exp_time = (new Datetime())->add(new DateInterval("PT{$expires_in}S"))->format('Y-m-d H:i:s');
 
             try {
                 $exists = (new Query())
@@ -104,6 +111,7 @@ class InstagramBasicDisplayService extends Component
                         ->createCommand()
                         ->update('instagram_access_token', [
                             'access_token' => serialize($token),
+                            'token_expiration_time' => $exp_time
                         ])->execute();
                 }
             } catch (Exception $e) {
@@ -111,7 +119,8 @@ class InstagramBasicDisplayService extends Component
                 echo $e->getMessage();
                 die();
             }
-            return $response->getBody();
+            echo "\n" . $response->getBody() . "\n" . "\n";
+            return true;
         } catch (GuzzleException $e) {
             return $e->getMessage();
         }
@@ -130,6 +139,7 @@ class InstagramBasicDisplayService extends Component
 
     /**
      * Get the full Instagram feed.
+     *
      * @return mixed
      */
     public function getFeed()
