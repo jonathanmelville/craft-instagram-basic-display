@@ -46,10 +46,9 @@ class TokenController extends Controller
      * Manually insert an access token into the database.
      *
      * @param $token
-     * @return bool|Exception|\yii\db\Exception
      */
     public function actionInsert($token) {
-        return InstagramBasicDisplay::$plugin->instagramBasicDisplayService->insertAccessToken($token);
+        InstagramBasicDisplay::$plugin->instagramBasicDisplayService->insertAccessToken($token);
     }
 
     /**

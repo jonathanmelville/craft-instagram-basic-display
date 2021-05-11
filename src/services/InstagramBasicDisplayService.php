@@ -67,11 +67,10 @@ class InstagramBasicDisplayService extends Component
             /*
              * Call refresh so we can get an expiration time for the token.
              */
-            echo $this->refreshToken() . "\n";
+            return $this->refreshToken() . "\n";
         } catch (Exception $e) {
             return $e;
         }
-        return true;
     }
 
     /**
@@ -135,10 +134,14 @@ class InstagramBasicDisplayService extends Component
      */
     public function getTokenExpirationTime()
     {
-        $exp_date = DateTimeHelper::toDateTime($this->_getAccessTokenAge())->format('F d, Y \a\t H:i:s A.');
-        $target = DateTimeHelper::toDateTime($this->_getAccessTokenAge());
-        $interval = (new DateTime())->diff($target)->format('%a day(s)');
-        echo "\n" . "\n" . "Token expires in {$interval} on {$exp_date}" . "\n" . "\n";
+        if (!empty($this->_getAccessToken())) {
+            $exp_date = DateTimeHelper::toDateTime($this->_getAccessTokenAge())->format('F d, Y \a\t H:i:s A.');
+            $target = DateTimeHelper::toDateTime($this->_getAccessTokenAge());
+            $interval = (new DateTime())->diff($target)->format('%a day(s)');
+            echo "\n" . "Token expires in {$interval} on {$exp_date}" . "\n" . "\n";
+        } else {
+            echo "\n" . 'No access token!' . "\n" . "\n";
+        }
     }
 
     /**
