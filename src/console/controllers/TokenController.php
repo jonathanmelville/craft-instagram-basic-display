@@ -12,6 +12,7 @@ namespace melvilleco\instagrambasicdisplay\console\controllers;
 
 use Exception;
 use melvilleco\instagrambasicdisplay\InstagramBasicDisplay;
+use Psr\Http\Message\StreamInterface;
 use yii\console\Controller;
 
 /**
@@ -54,18 +55,19 @@ class TokenController extends Controller
     /**
      * Refresh the current token.
      *
-     * @return \Psr\Http\Message\StreamInterface|string
+     * @return StreamInterface|string
      */
     public function actionRefresh() {
         return InstagramBasicDisplay::$plugin->instagramBasicDisplayService->refreshToken();
     }
 
     /**
-     * Get the age of the current token.
+     * Get the expiration time of the current token.
      *
+     * @throws Exception
      */
-    public function actionAge()
+    public function actionExp()
     {
-        return InstagramBasicDisplay::$plugin->instagramBasicDisplayService->getTokenAge();
+        InstagramBasicDisplay::$plugin->instagramBasicDisplayService->getTokenExpirationTime();
     }
 }

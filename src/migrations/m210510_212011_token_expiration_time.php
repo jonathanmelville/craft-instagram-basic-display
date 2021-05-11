@@ -2,7 +2,6 @@
 
 namespace melvilleco\instagrambasicdisplay\migrations;
 
-use Craft;
 use craft\db\Migration;
 
 /**

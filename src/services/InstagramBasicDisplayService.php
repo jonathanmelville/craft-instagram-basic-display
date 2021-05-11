@@ -13,7 +13,6 @@ namespace melvilleco\instagrambasicdisplay\services;
 use melvilleco\instagrambasicdisplay\InstagramBasicDisplay;
 use Craft;
 use DateTime;
-use DateInterval;
 use craft\helpers\DateTimeHelper;
 use craft\base\Component;
 use craft\db\Query;
@@ -97,7 +96,9 @@ class InstagramBasicDisplayService extends Component
 
             $token = json_decode($response->getBody(), true)['access_token'];
             $expires_in = json_decode($response->getBody(), true)['expires_in'];
-            $exp_time = (new Datetime())->add(new DateInterval("PT{$expires_in}S"))->format('Y-m-d H:i:s');
+            $exp_time = (new Datetime())->add(DateTimeHelper::secondsToInterval($expires_in))->format('Y-m-d H:i:s');
+
+            // $exp_time = (new Datetime())->add(new DateInterval("PT{$expires_in}S"))->format('Y-m-d H:i:s');
 
             try {
                 $exists = (new Query())
@@ -132,14 +133,12 @@ class InstagramBasicDisplayService extends Component
      *
      * @throws \Exception
      */
-    public function getTokenAge()
+    public function getTokenExpirationTime()
     {
-//        $target = DateTimeHelper::toDateTime($this->_getAccessTokenAge());
-//        $interval = $target->diff((new DateTime()));
-//        echo 'Token age: ' . $interval->format('%d day(s), %h hour(s), %i min, %s sec');
-        $exp_date = DateTimeHelper::toDateTime($this->_getAccessTokenAge())->format('F d, Y  H:i:s A');
-        echo "\n" . "Current token will expire on {$exp_date}" . "\n" ."\n";
-
+        $exp_date = DateTimeHelper::toDateTime($this->_getAccessTokenAge())->format('F d, Y \a\t H:i:s A.');
+        $target = DateTimeHelper::toDateTime($this->_getAccessTokenAge());
+        $interval = (new DateTime())->diff($target)->format('%a day(s)');
+        echo "\n" . "\n" . "Token expires in {$interval} on {$exp_date}" . "\n" . "\n";
     }
 
     /**
