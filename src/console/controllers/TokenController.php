@@ -10,11 +10,10 @@
 
 namespace melvilleco\instagrambasicdisplay\console\controllers;
 
+use Exception;
 use melvilleco\instagrambasicdisplay\InstagramBasicDisplay;
-
-use Craft;
+use Psr\Http\Message\StreamInterface;
 use yii\console\Controller;
-use yii\helpers\Console;
 
 /**
  * Instagram Basic Display
@@ -25,17 +24,6 @@ use yii\helpers\Console;
  * Craft can be invoked via commandline console by using the `./craft` command
  * from the project root.
  *
- * Console Commands are just controllers that are invoked to handle console
- * actions. The segment routing is plugin-name/controller-name/action-name
- *
- * The actionIndex() method is what is executed if no sub-commands are supplied, e.g.:
- *
- * ./craft instagram-basic-display/default
- *
- * Actions must be in 'kebab-case' so actionDoSomething() maps to 'do-something',
- * and would be invoked via:
- *
- * ./craft instagram-basic-display/default/do-something
  *
  * @author    Jonathan Melville
  * @package   InstagramBasicDisplay
@@ -58,18 +46,27 @@ class TokenController extends Controller
      * Manually insert an access token into the database.
      *
      * @param $token
-     * @return bool|\Exception|\yii\db\Exception
      */
     public function actionInsert($token) {
-        return InstagramBasicDisplay::$plugin->instagramBasicDisplayService->insertAccessToken($token);
+        InstagramBasicDisplay::$plugin->instagramBasicDisplayService->insertAccessToken($token);
     }
 
     /**
      * Refresh the current token.
      *
-     * @return \Psr\Http\Message\StreamInterface|string
+     * @return StreamInterface|string
      */
     public function actionRefresh() {
         return InstagramBasicDisplay::$plugin->instagramBasicDisplayService->refreshToken();
+    }
+
+    /**
+     * Get the expiration time of the current token.
+     *
+     * @throws Exception
+     */
+    public function actionExp()
+    {
+        InstagramBasicDisplay::$plugin->instagramBasicDisplayService->getTokenExpirationTime();
     }
 }
