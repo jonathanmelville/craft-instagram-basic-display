@@ -36,7 +36,6 @@ Configuration is done via the `src/config.php` config file. It should be renamed
 
 The most likely options you may want to change are `cache_duration` and `fields`. `fields` simply determines [what data is returned](https://developers.facebook.com/docs/instagram-basic-display-api/reference/media/#fields) by the request. 
 
-#
 
 ## Inserting Your Access Token
 
@@ -61,6 +60,12 @@ Your old token will be used to obtain a new one, and the new token will be inser
 ## Commands and Endpoints
 ### Console Commands
 The following console commands are available:
+
+***
+
+Get the expiration date/time of the current token:
+
+      ./craft instagram-basic-display/token/exp
 
 ***
 
