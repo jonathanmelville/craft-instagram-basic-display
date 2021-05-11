@@ -1,5 +1,9 @@
 # Instagram Basic Display Changelog
 
+## 1.0.5 - 2021-05-11
+### Added
+- `instagram-basic-display/token/exp` command to view the expiration date of the current token.
+
 ## 1.0.4 - 2021-04-28
 ### Added
 - Add support for outputting feed in twig.
