@@ -99,9 +99,11 @@ You can also output your feed inside your Twig templates using a `{% for %}` loo
 <ul>
    {% for media in craft.instagram.getFeed() %}
       {% if media.media_type == 'IMAGE' %}
-         <a href="{{ media.permalink }}">
-            <img src="{{ media.media_url }}" alt="">
-         </a>
+         <li>
+            <a href="{{ media.permalink }}">
+               <img src="{{ media.media_url }}" alt="">
+            </a>
+         </li>
       {% endif %}
    {% endfor %}
 </ul>
