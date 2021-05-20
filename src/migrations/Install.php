@@ -15,6 +15,7 @@ class Install extends Migration
     {
         $this->createTable('instagram_access_token', [
             'access_token' => 'char(255)',
+            'token_expiration_time' => $this->dateTime(),
             'dateCreated' => $this->dateTime()->notNull(),
             'dateUpdated' => $this->dateTime()->notNull(),
             'id' => $this->primaryKey(),
