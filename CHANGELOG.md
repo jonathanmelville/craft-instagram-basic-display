@@ -1,5 +1,9 @@
 # Instagram Basic Display Changelog
 
+## 1.0.6 - 2021-05-20
+### Fixed
+- Fixed an issue where the `token_expiration_time` column was not created on initial installation.
+
 ## 1.0.5 - 2021-05-11
 ### Added
 - `instagram-basic-display/token/exp` command to view the expiration date of the current token.

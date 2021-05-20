@@ -22,7 +22,7 @@ To install the plugin, follow these instructions.
 
 3. Obtain a [long-lived access token](https://developers.facebook.com/docs/instagram-basic-display-api/guides/long-lived-access-tokens/) from Instagram (see example video below) and [insert it into your database](#inserting-your-access-token).
 
-<a href="https://www.loom.com/share/687cc456759d4fb89772075b77cf64e1"> <p>How to get an initial access token for the Instagram Basic Display API - Watch Video</p> <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/687cc456759d4fb89772075b77cf64e1-with-play.gif"> </a>
+<a href="https://www.loom.com/share/b050f13355a34a9c825c47d85e122767"> <p>How to get an initial access token for the Instagram Basic Display API - Watch Video</p> <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/687cc456759d4fb89772075b77cf64e1-with-play.gif"> </a>
 
 ## Instagram Basic Display Overview
 
@@ -99,9 +99,11 @@ You can also output your feed inside your Twig templates using a `{% for %}` loo
 <ul>
    {% for media in craft.instagram.getFeed() %}
       {% if media.media_type == 'IMAGE' %}
-         <a href="{{ media.permalink }}">
-            <img src="{{ media.media_url }}" alt="">
-         </a>
+         <li>
+            <a href="{{ media.permalink }}">
+               <img src="{{ media.media_url }}" alt="">
+            </a>
+         </li>
       {% endif %}
    {% endfor %}
 </ul>
